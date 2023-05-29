@@ -1,0 +1,48 @@
+
+1. Empty directory tree:
+    - Create an empty directory tree and perform operations like adding, removing, updating, and fetching folders.
+2. Test removing the root folder itself.
+3. Unique folder names and IDs:
+    - Test adding multiple folders with the same name and check if the program assigns unique IDs to each folder correctly.
+4. Performance testing:
+    - Create a large directory tree with thousands of folders.
+    - Measure the performance of operations like adding, removing, and updating folders.
+5. Error handling:
+    - Test error handling when performing operations on non-existing folders or invalid paths.
+    - Verify that the program returns appropriate error messages or gracefully handles such cases.
+
+EXAMPLE : 
+
+   int main() {
+    Folder rootFolder;
+    rootFolder.id = 0;
+    rootFolder.name = "Root";
+    rootFolder.path = "/root";
+
+    // Perform operations only if the directory tree is not empty
+    if (!rootFolder.children.empty()) {
+
+        // Add a new folder
+        addFolder(rootFolder, "NewFolder");
+
+        // Fetch the path of a folder
+        string folderPath = fetchFolderPath(rootFolder, "NewFolder");
+        if (!folderPath.empty()) {
+            cout << "NewFolder path: " << folderPath << endl;
+        } else {
+            cout << "NewFolder not found." << endl;
+        }
+
+        // Update the name of a folder
+        updateFolderName(rootFolder, "NewFolder", "UpdatedFolder");
+
+        // Remove a folder
+        removeFolder(rootFolder, "UpdatedFolder");
+
+    } 
+    else {
+        cout << "The directory tree is empty." << endl;
+    }
+
+    return 0;
+}
